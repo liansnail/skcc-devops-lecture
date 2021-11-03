@@ -106,6 +106,28 @@ Git Credential 기능을 사용하면 인증정보를 저장해 두고 자동으
 
 Git Credential 기능은 몇 가지 옵션이 있으며, 자세한 내용은 [Git 도구 - Credential 저장소](https://git-scm.com/book/ko/v2/Git-%EB%8F%84%EA%B5%AC-Credential-%EC%A0%80%EC%9E%A5%EC%86%8C) 문서를 참고하세요.
 
+#### ubuntu 자격 인증 정보 저장
+아래는 매번 입력해야 하는 인증을 캐시에 저장하여 일정 시간동안 입력하지 않는 방법입니다.
+```bash
+git config credential.helper store
+```
+
+아직 저장된 credential 정보가 없으니 아래 예시처럼 아이디와 패스워드를 입력합니다.
+
+```bash
+$ git push http://example.com/repo.git
+Username: <type your username>
+Password: <type your token>
+```
+
+계정을 입력한 후에는 정보가 서버에 저장되어 입력하지 않아도 됩니다.
+이 때 만료시간(초 단위)을 입력하기 위해서 아래의 커맨드를 추가로 입력합니다.
+
+```bash
+git config --global credential.helper 'cache --timeout 7200'
+```
+
+
 #### macOS 키체인에 인증 정보 저장
 
 아래 명령을 실행하여 `osxkeychain helper`가 설치되어 있는지 확인합니다.

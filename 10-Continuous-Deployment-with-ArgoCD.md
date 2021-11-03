@@ -438,7 +438,7 @@ petclinic-argocd-manifest
 
 ### GitHub Repository에 Helm 차트 Push
 
-Workspace EC2 인스턴스에서 `git version` 명령을 실행하여 설치되어 있는지 확인하고, 되어 있지 않으면 Git를 설치합니다.
+Workspace EC2 인스턴스에서 `git version` 명령을 실행하여 설치되어 있는지 확인하고, 되어 있지 않으면 Git를 설치합니다.(앞서 설치되어 있으면 Skip함)
 
 ```bash
 git version
@@ -465,7 +465,7 @@ git config user.email "gdhong@example.com"
 GitHub 인증 정보를 저장합니다.
 
 ```bash
-git config credential.helper 'cache --timeout=3600'
+git config credential.helper 'cache --timeout=7200'
 ```
 
 Git 사용자 이름과 이메일 주소를 올바르게 설정했는지 확인합니다.
