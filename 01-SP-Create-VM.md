@@ -307,9 +307,9 @@ Workspace Remote Desktop(원격 데스크톱) 연결 후,
 
 비고.
 hostname 변경 및 적용 (ex. workspace, tools 등)
-```
+```bash
 #변경
-$ sudo nano /etc/hostname
+$ sudo vi /etc/hostname
     
 #적용
 $ sudo hostname -F /etc/hostname
