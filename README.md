@@ -1,2 +1,3 @@
-# skcc-devops-lecture
-skcc devops pipeline lecture
+# Open Source기반 DevOps Pipeline on AWS 구축
+
+
