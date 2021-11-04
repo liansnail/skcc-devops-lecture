@@ -171,7 +171,7 @@ STS에서 기본적으로 dotfiles 또는 dotfolders(`.`으로 시작되는 설�
 6. `git push` 명령을 실행하여 원격 저장소 GitHub으로 Push 합니다.
 
 
-    * 아이디, 패스워드 캐싱
+    * 아이디, 패스워드 캐싱 ( 미실행 자 수행 )
 
         ```bash
         git config credential.helper store
