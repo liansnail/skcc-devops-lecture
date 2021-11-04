@@ -232,8 +232,9 @@ SSH Key 생성 시 암호를 입력한 경우, [Adding your SSH key to the ssh-a
 #### SSH를 사용하여 GitHub 리포지토리 Clone
 
 ```bash
-cd [your_workspace]
-git clone git@github.com:[your_username]/spring-boot-hello-world.git
+mkdir workspace # 없는 경우 생성
+cd workspace
+git clone git@github.com:[your_username]/spring-petclinic-rest.git
 ```
 
 ## 참고
