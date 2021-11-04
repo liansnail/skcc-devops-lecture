@@ -972,7 +972,7 @@ pipeline {
     
     ...(생략)
 
-    stage('PerforfmanceTest') {
+    stage('Performance Test') {
      steps {
        withCredentials([usernamePassword(credentialsId: 'skcc-devops01-github', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PWD')]) {
           container('jmeter') {
