@@ -614,8 +614,9 @@ Workspace EC2 인스턴스에서 아래 명령을 실행하여 kubeconfig 파일
 cat ~/.kube/config
 ```
 
-만약 로컬 PC에 사용하려면 kubeconfig 파일을 생성하고 위에서 출력된 내용을 복사하여 붙여넣고 저장합니다.
-면
+
+참고로 만약 로컬 PC에 사용하려면 kubeconfig 파일을 생성하고 위에서 출력된 내용을 복사하여 붙여넣고 저장합니다.
+
 ```bash
 vi kubeconfig-admin.yaml
 ```
