@@ -250,3 +250,4 @@ helm install fluentd bitnami/fluentd -f fluentd_values.yaml
 
 [Elasticsearch architecture](https://subscription.packtpub.com/book/data/9781789957754/1/ch01lvl1sec04/elasticsearch-architectural-overview)  
 [Elasticsearch Node](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html)  
+[mySUNI > Prometheus & Grafana 이해와 활용](https://mysuni.sk.com/suni-main/lecture/card/CARD-12vu/view)
