@@ -25,6 +25,9 @@
 
 ### 추가 정보
 
+#### 변화
+[당황하지 마세요. 쿠버네티스와 도커](https://kubernetes.io/ko/blog/2020/12/02/dont-panic-kubernetes-and-docker/)
+
 #### 보안
 
 toktok 상단 메뉴 '업무지원' > 정보보안 Portal > 정책/가이드 하단
