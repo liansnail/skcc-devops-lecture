@@ -253,3 +253,4 @@ helm install fluentd bitnami/fluentd -f fluentd_values.yaml
 [mySUNI > Prometheus & Grafana 이해와 활용](https://mysuni.sk.com/suni-main/lecture/card/CARD-12vu/view)  
 [Elastic License 2.0(ELv2) 관련 FAQ](https://www.elastic.co/kr/licensing/elastic-license/faq)  
 [Grafana Licensing](https://grafana.com/licensing/)  
+[오픈소스 라이선스 변화의 흐름](https://tech.kakao.com/2021/09/08/opensource-license/)  
