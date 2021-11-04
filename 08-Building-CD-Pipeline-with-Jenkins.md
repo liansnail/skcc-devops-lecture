@@ -741,7 +741,7 @@ Job을 두 번 이상 실행하면 Maven .m2 폴더가 Cache되어 의존성 라
 [Postman 구성 및 Test scripts 작성](08.1-Setup-Postman.md) 가이드에 따라 API 테스트 스크립트를 작성하고 Postman Collection를 Export하여, `spring-petclinic-rest` Workspace에 저장합니다.
 
 ```bash
-cd ~devops/workspace
+cd ~/devops/workspace
 git clone https://github.com/skcc-devops-pipeline-study/skcc-devops-lecture.git
 cd skcc-devops-lecture
 ```
