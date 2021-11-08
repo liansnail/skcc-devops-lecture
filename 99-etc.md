@@ -18,7 +18,9 @@
 docker build로 이미지 빌드 -> docker push로 이미지를 레지스트리에 등록 -> kubectl 커맨드로 매니페스트에 기재한 오브젝트들의 생성을 요청 -> 매니페스트에 기재된 리포지터리로부터 컨테이너의 이미지를 다운로드 -> 컨테이너를 파드 위에서 기동 
 
 [**쿠버네티스(Kubernetes)**](https://kubernetes.io/ko/docs/concepts/overview/what-is-kubernetes/) 
+
 [The Illustrated Children’s Guide to Kubernetes](https://www.cncf.io/phippy/the-childrens-illustrated-guide-to-kubernetes/) 
+
 [쿠버네티스(Kubernetes)란? 개‭념, 성‭능, 사‭용 방‭법 및 차‭이‭점](https://www.redhat.com/ko/topics/containers/what-is-kubernetes)  
 구글의 사내 운영 시스템인 Borg를 CNCF(Cloud Native Computing Foundation)에 기증되어 오픈소스 프로젝트로 운영 중이다. 컨테이너화된 애플리케이션을 효율적으로 배포하고 운영하기 위해 설계된 오픈소스 플랫폼. 그리스어로 조타수, 캡틴 등의 의미가 있어 배의 타륜을 그린 로고가 사용된다. 개발자들이 일반적으로 오픈소스르 사용하여 짧은 시간에 고품질의 애플리케이션을 개발하는데, 빠르게 변화하는 오픈소스으 버전 차이로 개발 생산성과 안정성이 떨어지는 문제가 발생하여 애플리케이션 실행에 필요한 라이브러리나 운영체제 패키지 등을 모두 담아서 불변의 실행 환경(Immutable Infrastructure)가 필요해서 탄생하게 된다. 아키텍처는 마스터와 노드로 구성되며, 마스터가 노드를 제어하고, 노드에서 컨테이너가 돌아간다. 쿠버네티스 스택은 주로 도커를 런타임 환경으로 사용했는데, CRI(Container Runtime Interface)로 컨테이너 실행 환경오 연동하는 식으로 발전하고 있다.  
 
