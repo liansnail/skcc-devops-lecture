@@ -19,7 +19,7 @@ git clone https://github.com/xxxxx/spring-petclinic-rest.git
 
 ## STS에서 Spring Boot 프로젝트 구성
 
-다음을 수행하여 Siren Order 프로젝트를 구성합니다.
+다음을 수행하여 Spring-petclinic-rest 프로젝트를 구성합니다.
 
 * **File > Import...** 을 선택합니다.
 * **Maven > Existing Maven Projects**을 선택하고 **Next** 버튼을 클릭합니다.
