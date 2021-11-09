@@ -87,7 +87,7 @@ Git Credential 기능을 사용하면 인증정보를 저장해 두고 자동으
 * Token을 만들기 위해 **우상단(User Profile Icon)** > **Settings** > 좌측 하단 메뉴 (**Developer setting**) > **Personal access tokens** > `Generate new token` 클릭
     * **Note** : 토큰을 지정하는 이름
     * **Expiration** : 토큰 유효 기간 (여기서는 `No Expiration`선택)
-    * **Select Scopes** : 필요한 권한에만 체크 (보통은`repo`, `read.org`, `gist`, `admin:org`)
+    * **Select Scopes** : 필요한 권한에만 체크 (보통은`repo`, `gist`, `admin:org`)
 
     |<img src="images/github-tokens1.png" width="600"/> |
     | ---------------------------------------------------------- |
