@@ -70,9 +70,10 @@ kubectl version --client
 kubectl version --short --client
 ```
 
-## kubectx 및 kubens 설치
+## kubens 설치
 
-kubectx는 kubectl 컨텍스트를 관리하고 전환하는 유틸리티 입니다.  
+<!-- kubectx는 kubectl 컨텍스트를 관리하고 전환하는 유틸리티 입니다.  -->
+
 kubens는 Kubernetes 네임스페이스 사이를 전환하는 유틸리티 입니다.
 
 ### 리눅스에 kubens 설치
@@ -83,10 +84,11 @@ tar -xvf kubens.tar.gz
 chmod +x kubens
 sudo mv kubens /usr/local/bin/kubens
 ```
+<!--
+kubectx도 비슷한 방식으로 설치하면 됩니다.
+-->
 
-kubectx도 비슷한 방식으로 설치하변 됩니다.
-
-### macOS에 kubectx + kubens 설치
+### macOS에 kubens 설치 ( kubectx 에 포함 )
 
 ```bash
 brew install kubectx
