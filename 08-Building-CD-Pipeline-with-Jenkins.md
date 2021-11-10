@@ -227,7 +227,7 @@ Role Binding 정보를 확인합니다.
 ```bash
 kubectl get rolebindings petclinic-rb -o yaml
 ```
-
+<!--
 ### Harbor User 생성
 
 * **Administration > Users**에서 **NEW USER** 버튼을 클릭한 후 User를 생성합니다.
@@ -235,6 +235,7 @@ kubectl get rolebindings petclinic-rb -o yaml
 * **Members** 탭을 클릭합니다.
 * **USER** 버튼을 클릭한 후, **Name** 필드에서 계정을 검색하여 선택합니다.
 * **Role** 필드에서 `Developer`를 선택하고 **OK** 버튼을 클릭합니다.
+-->
 
 ### Docker Registry 시크릿(Secret) 생성
 
