@@ -321,7 +321,7 @@ argocd app delete petclinic
      port: 9966
    
    ingress:
-     enabled: ture
+     enabled: true
      annotations: {}
        # kubernetes.io/ingress.class: nginx
        # kubernetes.io/tls-acme: "true"
