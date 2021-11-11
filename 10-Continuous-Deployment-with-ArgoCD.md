@@ -726,7 +726,7 @@ jenkins-agent-pod.yaml 수정하여 argocd container를 추가합니다.
 
 ```
 
-##### Stage('Update manifest') 다음에 아래와 같이 ArgoCD Sync 처리를 위한 Stage를 추가합니다.
+##### Jenkinsfile-Basic-CD Stage('Update manifest') 다음에 아래와 같이 ArgoCD Sync 처리를 위한 Stage를 추가합니다.
 
 
 ```groovy
