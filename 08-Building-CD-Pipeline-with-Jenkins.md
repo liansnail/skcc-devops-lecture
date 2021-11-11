@@ -532,7 +532,7 @@ spec:
     git push
     ```
 
-* `Jenkinsfile-Basic-CD` 파일을 생성하고 아래 내용을 붙여 넣고 `REGISTRY_URL`, `REGISTRY_CREDENTIALS`를 수정합니다. (ex. REGISTRY_CREDENTIALS='harbor-docker-register')
+* `Jenkinsfile-Basic-CD` 파일을 생성하고 아래 내용을 붙여 넣고 `REGISTRY_URL`, `REGISTRY_CREDENTIALS`를 수정합니다. (ex. REGISTRY_CREDENTIALS='harbor-docker-registry')
 
 ```groovy
 pipeline {
