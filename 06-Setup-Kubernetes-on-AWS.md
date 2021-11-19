@@ -635,7 +635,7 @@ vi kubeconfig-admin.yaml
 
     ![Cluster UI](images/lens_cluster_initial_ui.png "Cluster UI")
 
-* **`☰`**(햄버거 메뉴) 위에 있는 Cluster의 아이콘을 우클릭한 다음 **Settings**를 선택합니다.
+* **`☰`**(세로 줄임표 모양 메뉴) 클릭 후 **Settings**를 선택합니다.
 * 아래로 스크롤하여 **Features** 섹션으로 이동하여 **Install** 버튼을 클릭하여 **Metrics Stack**을 설치합니다.
 
     ![Install Metrics Stack](images/lens_install_metrics_stack.png "Install Metrics Stack")
