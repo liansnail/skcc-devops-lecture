@@ -264,7 +264,7 @@ argocd app delete petclinic
   {{- end }}
 ```
 
-* `values.yaml` 파일을 열고 다음 항목을 수정합니다.
+* `values.yaml` 파일을 열고 다음 항목을 수정합니다. (전체적인 모습은 아래 그림을 참고하되 자신의 정보에 맞게 수정할 것)
   * replicaCount : 2
   * image.repository : <Harbor_IP>:<Harbor_Port>/petclinic/spring-petclinic-rest
   * image.tag : 배포할 이미지 태그 (Harbor에서 확인)
@@ -273,7 +273,7 @@ argocd app delete petclinic
   * serviceAccount.name : "petclinic-sa"
   * service.port : 9966
   * ingress.enabled : true
-  * ingress : 아래 내용 대로 수정합니다. (ingress 하단 영역 주의해서 수정) 
+  * ingress : 아래 내용을 참고 (ingress 하단 영역 주의해서 수정) 
   <br>
   
    ```yaml 
