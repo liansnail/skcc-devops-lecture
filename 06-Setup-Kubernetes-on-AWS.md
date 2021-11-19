@@ -353,10 +353,10 @@ aws s3api put-bucket-encryption \
 ```bash
 $ vi ~/.bashrc
 
-#export KOPS_CLUSTER_NAME=devops.skcc-devops01.k8s.local
-#export KOPS_STATE_STORE=s3://devops-skcc-devops01-state-store
+#export KOPS_CLUSTER_NAME=devops.skcc-devopsXX.k8s.local
+#export KOPS_STATE_STORE=s3://devops-skcc-devopsXX-state-store
 export KOPS_CLUSTER_NAME=<your_cluster_name>.k8s.local
-export KOPS_STATE_STORE=s3://prefix-example-com-state-store
+export KOPS_STATE_STORE=s3://devops-skcc-devops<내 번호>-state-store
 export AWS_PROFILE=kops
 ```
 
