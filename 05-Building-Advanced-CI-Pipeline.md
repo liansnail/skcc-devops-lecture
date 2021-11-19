@@ -614,7 +614,7 @@ Finished: SUCCESS
   * **Kind** : `Username and password` 선택
   * **Scope** : `Global (Jenkins, nodes, items, all child items, etc)` 선택
   * **Username** : Harbor의 프로젝트 계정 Username ( **`admin`** 사용 )
-  * **Password** : Harbor의 프로젝트 로봇 패스워드 입력
+  * **Password** : Harbor의 프로젝트 패스워드 입력 (주의! GitHub 암호가 아니라 Harbor 패스워드 넣을 것!)
   * **ID** : 원하는 고유한 ID 입력 (예: `harbor-docker-registry`)
   * **Description** : (선택사항) 유사한 자격 증명(credentials)을 구분하는 데 도움이 되는 설명 입력
 
