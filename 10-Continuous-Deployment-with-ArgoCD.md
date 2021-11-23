@@ -1,4 +1,5 @@
-
+**[목차]**
+[TOC]
 # Argo CD로 지속적 배포(Continuous Deployment)
 
 ## Kubernetes Manifests(YAML)를 사용하여 App 배포
@@ -272,8 +273,9 @@ argocd app delete petclinic
   * serviceAccount.create : false (이미 생성한 `petclinic-sa` 사용)
   * serviceAccount.name : "petclinic-sa"
   * service.port : 9966
-  * ingress.enabled : true
-  * ingress : 아래 내용을 참고 (ingress 하단 영역 주의해서 수정) 
+  * ingress : **아래 샘플 내용 참고**  
+    * ingress.enabled : true
+    * ingress.hosts : 하단 영역 주의해서 수정
   <br>
   
    ```yaml 

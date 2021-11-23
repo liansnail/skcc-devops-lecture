@@ -1,3 +1,5 @@
+**[목차]**
+[TOC]
 # Jenkins로 CD Pipeline 구축
 
 ## Jenkins와 Kubernetes 연동
@@ -55,11 +57,11 @@ Jenkins와 Kubernetes를 연동하고 Jenkins Pipeline에서 Kubernetes cluster�
   * **Jenkins URL** : `http://<Jenkins_IP>:<Jenkins_Port>` 입력
 * **Pod Templates...** 버튼을 클릭합니다.
 * **Add Pod Template** 버튼을 클릭하고 **Pod Template details...** 버튼을 클릭한 다음, 아래 항목을 입력합니다.
-  * **Name** : `jenkins-slave`(원하는 이름) 입력
-  * **Labels** : `jenkins-slave`(원하는 이름) 입력
+  * **Name** : `jenkins-slave` 입력 (또는 원하는 이름)
+  * **Labels** : `jenkins-slave` 입력 (또는 원하는 이름)
   * **Usage** : `Use this node as much as possible` 선택
 * **Containers** 필드의 **Add Container** 드롭다운 메뉴에서 **Container Template**을 클릭한 다음, 다음 항목을 입력합니다.
-  * **Name** : `jenkins-slave`(원하는 이름) 입력
+  * **Name** : `jenkins-slave` 입력 (또는 원하는 이름)
   * **Docker image** : `jenkinsci/jnlp-slave` 입력
   * **Working directory** : `/home/jenkins/agent` 입력
   * **Command to run** : `/bin/sh -c` 입력
