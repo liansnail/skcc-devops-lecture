@@ -1,5 +1,18 @@
 **[목차]**
-[TOC]
+- [Jenkins로 기본 CI Pipeline 구축](#jenkins로-기본-ci-pipeline-구축)
+  - [Jenkins와 GitHub 연동](#jenkins와-github-연동)
+    - [Jenkins Job 구성](#jenkins-job-구성)
+    - [Jenkins Job 실행](#jenkins-job-실행)
+  - [기본 CI Pipeline 구성](#기본-ci-pipeline-구성)
+    - [Jenkinsfile 생성](#jenkinsfile-생성)
+    - [CI Pipeline Job 생성](#ci-pipeline-job-생성)
+    - [CI Pipeline Job 실행](#ci-pipeline-job-실행)
+  - [CI Pipeline에 Unit Test 추가](#ci-pipeline에-unit-test-추가)
+    - [Unit Test 코드 작성](#unit-test-코드-작성)
+    - [Jenkinsfile에 `Unit Test` stage 추가](#jenkinsfile에-unit-test-stage-추가)
+    - [CI Pipeline Job 실행 (Build > Unit Test)](#ci-pipeline-job-실행-build--unit-test)
+    - [Unit Test Report](#unit-test-report)
+  - [참고](#참고)
 # Jenkins로 기본 CI Pipeline 구축
 
 ## Jenkins와 GitHub 연동
@@ -8,8 +21,8 @@
 
 ### Jenkins Job 구성
 
-|<img src="images/jenkins_dashboard.png" width="700"/> |
-| ---------------------------------------------------- |
+| <img src="images/jenkins_dashboard.png" width="700"/> |
+| ----------------------------------------------------- |
 
 
 다음과 같이 수행하여 Jenkins Job을 생성하고 구성합니다.
@@ -92,8 +105,8 @@ Jenkins Pipeline의 정의는 프로젝트의 소스 제어 저장소에 커밋 
 * **Credentials** 필드에 이전 단계에서 생성한 자격 증명을 선택합니다.
 * **Branch Specifier** 필드에 `*/master`으로 수정한 다음 **저장** 버튼을 클릭합니다.
 
-    |![Jenkins Pipeline script from SCM](images/jenkins_pipeline_git_repositories.png "Jenkins Pipeline script from SCM")|
-    |-|
+    | ![Jenkins Pipeline script from SCM](images/jenkins_pipeline_git_repositories.png "Jenkins Pipeline script from SCM") |
+    | -------------------------------------------------------------------------------------------------------------------- |
 
 ### CI Pipeline Job 실행
 
@@ -316,12 +329,12 @@ Finished: SUCCESS
 
 ### Unit Test Report
 
-|![CI Pipeline View](images/jenkins_ci_pipeline_view.png "CI Pipeline View")|
-|-|
+| ![CI Pipeline View](images/jenkins_ci_pipeline_view.png "CI Pipeline View") |
+| --------------------------------------------------------------------------- |
 사이드 바에서 **Test Result**를 클릭하면 Unit Test Report를 확인할 수 있습니다.
 
-|![Test Result](images/jenkins_test_result.png "Test Result")|
-|-|
+| ![Test Result](images/jenkins_test_result.png "Test Result") |
+| ------------------------------------------------------------ |
 
 ## 참고
 

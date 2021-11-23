@@ -1,5 +1,20 @@
 **[목차]**
-[TOC]
+- [Git & GitHub 시작하기](#git--github-시작하기)
+  - [Git에 사용자 이름 및 이메일 설정](#git에-사용자-이름-및-이메일-설정)
+  - [GitHub 계정 생성 및 로그인](#github-계정-생성-및-로그인)
+  - [Repository 생성](#repository-생성)
+  - [[참고] Git에서 GitHub 인증](#참고-git에서-github-인증)
+    - [HTTPS를 사용하여 GitHub 연결](#https를-사용하여-github-연결)
+      - [github token을 이용한 인증](#github-token을-이용한-인증)
+      - [ubuntu 자격 인증 정보 저장](#ubuntu-자격-인증-정보-저장)
+      - [macOS 키체인에 인증 정보 저장](#macos-키체인에-인증-정보-저장)
+      - [Windows 자격 증명 관리자(Credential Manager)에 인증 정보 저장](#windows-자격-증명-관리자credential-manager에-인증-정보-저장)
+      - [HTTPS를 사용하여 GitHub 리포지토리 Clone](#https를-사용하여-github-리포지토리-clone)
+    - [SSH를 사용하여 GitHub 연결](#ssh를-사용하여-github-연결)
+      - [SSH key 생성](#ssh-key-생성)
+      - [GitHub 계정에 SSH key 등록](#github-계정에-ssh-key-등록)
+      - [SSH를 사용하여 GitHub 리포지토리 Clone](#ssh를-사용하여-github-리포지토리-clone)
+  - [참고](#참고)
 # Git & GitHub 시작하기
 
 ## Git에 사용자 이름 및 이메일 설정
@@ -59,7 +74,7 @@ git config --list
 
 1. 페이지 오른쪽 상단에서 **+** 드롭다운 메뉴을 클릭한 후 **Import repository**를 선택합니다.  
     또는 **Repositories** 탭에서 **New** 버튼을 클릭합니다.
-    |![New repository](images/github-import-repository.png "Import repository")|
+    | ![New repository](images/github-import-repository.png "Import repository") |
     | -------------------------------------------------------------------------- |
 
 2. **Import repository** 페이지에서 아래 항목을 입력 또는 선택합니다.
@@ -68,8 +83,8 @@ git config --list
     * **Privacy** : 여기서는 `Private` 선택 (공개 여부에 따라 `Public` 또는 `Private`을 선택합니다.)
     <!-- ![Create a new repository](images/create_new_repository.png "Create a new repository") -->
     
-    |<img src="images/begin-import-repository.png" width="600"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/begin-import-repository.png" width="600"/> |
+    | ----------------------------------------------------------- |
 
 
 3. **`Begin import`** 버튼을 클릭합니다.
@@ -91,13 +106,13 @@ Git Credential 기능을 사용하면 인증정보를 저장해 두고 자동으
     * **Expiration** : 토큰 유효 기간 (여기서는 `No Expiration`선택)
     * **Select Scopes** : 필요한 권한에만 체크 (보통은`repo`, `gist`, `admin:org`)
 
-    |<img src="images/github-tokens1.png" width="600"/> |
-    | ---------------------------------------------------------- |
+    | <img src="images/github-tokens1.png" width="600"/> |
+    | -------------------------------------------------- |
 
     * `Generate token` 클릭하여 생성
 
-    |<img src="images/github-tokens2.png" width="600"/> |
-    | ---------------------------------------------------------- |
+    | <img src="images/github-tokens2.png" width="600"/> |
+    | -------------------------------------------------- |
 
 
     * 생성 토큰은 복사하고 안전전 곳에 저장해 둡니다. 

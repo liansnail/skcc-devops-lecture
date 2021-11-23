@@ -1,19 +1,35 @@
 **[목차]** 
-[TOC]
+- [개발 환경 구성](#개발-환경-구성)
+  - [전체 시스템 구성](#전체-시스템-구성)
+  - [VM 생성](#vm-생성)
+    - [Workspace VM 생성](#workspace-vm-생성)
+    - [탄력적 IP 주소 할당](#탄력적-ip-주소-할당)
+    - [인스턴스에 탄력적 IP 주소 연결](#인스턴스에-탄력적-ip-주소-연결)
+  - [인스턴스에 연결](#인스턴스에-연결)
+    - [SSH 클라이언트를 사용하여 Linux 인스턴스에 연결 (macOS)](#ssh-클라이언트를-사용하여-linux-인스턴스에-연결-macos)
+    - [SSH 클라이언트를 사용하여 Linux 인스턴스에 연결 (Windows)](#ssh-클라이언트를-사용하여-linux-인스턴스에-연결-windows)
+    - [SSH 클라이언트를 사용하여 Linux 인스턴스에 연결 (AWS Console 이용)](#ssh-클라이언트를-사용하여-linux-인스턴스에-연결-aws-console-이용)
+  - [Workspace Desktop 연결](#workspace-desktop-연결)
+    - [Desktop 접속](#desktop-접속)
+    - [Microsoft 원격 데스크톱 연결을 통한 Remote 연결 (For Windows 사용자)](#microsoft-원격-데스크톱-연결을-통한-remote-연결-for-windows-사용자)
+    - [Tools VM 생성](#tools-vm-생성)
+    - [추가 환경 설정](#추가-환경-설정)
+  - [참고](#참고)
+
 # 개발 환경 구성
 ## 전체 시스템 구성
 
 < 전체 아키텍처 >
-|<img src="images/skcc-devops-architecture.png" width="700"/> |
-| -------------------------------------------------------------------------- |
+| <img src="images/skcc-devops-architecture.png" width="700"/> |
+| ------------------------------------------------------------ |
 
 ## VM 생성
 
 ### Workspace VM 생성
 
 < Workspace VM image >
-|<img src="images/workspace-vm-image.png" width="300"/> |
-| -------------------------------------------------------------------------- |
+| <img src="images/workspace-vm-image.png" width="300"/> |
+| ------------------------------------------------------ |
 
 
 [AWS Console](https://aws.amazon.com/)에 로그인하여 다음 단계를 실행합니다.
@@ -21,38 +37,38 @@
 1. 서비스 [EC2 콘솔](https://console.aws.amazon.com/ec2/) 좌측 탐색 창 > 이미지 > AMI > `프라이빗 이미지` 선택합니다.
 2. AMI 이름 `skcc-aws-workspace-##` 이미지를 선택합니다.
 
-    |<img src="images/devops-workspace-image.png" width="700"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/devops-workspace-image.png" width="700"/> |
+    | ---------------------------------------------------------- |
 
 3. 이미지 `시작하기`를 클릭합니다.
 
-    |<img src="images/devops-workspace-image2.png" width="300"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/devops-workspace-image2.png" width="300"/> |
+    | ----------------------------------------------------------- |
 
 4. 인스턴스 유형 `t3.large`를 선택합니다.
 
-    |<img src="images/devops-workspace-image3.png" width="700"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/devops-workspace-image3.png" width="700"/> |
+    | ----------------------------------------------------------- |
 
 5. `다음:인스턴스 세부 정보구성` > `다음:스토리지 추가` > `다음:태그 추가` 까지 진행한 후 다음과 같이 입력합니다.
     * 키 : `Name`
     * 값 : `workspace`
 
-    |<img src="images/devops-workspace-image4.png" width="700"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/devops-workspace-image4.png" width="700"/> |
+    | ----------------------------------------------------------- |
 
 6. `다음:보안 그룹 구성`에서 `규칙 추가`를 누른 후 다음과 같이 추가합니다.
     * 유형 : `RDP`
     * 포트 범위 : `3389`
     * 소스 : `사용자 지정`, `0.0.0.0/0`
 
-    |<img src="images/devops-workspace-image5-fix1.png" width="700"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/devops-workspace-image5-fix1.png" width="700"/> |
+    | ---------------------------------------------------------------- |
 
 7. `검토 및 시작` 누른 후 검토합니다.
 
-    |<img src="images/devops-workspace-image6.png" width="700"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/devops-workspace-image6.png" width="700"/> |
+    | ----------------------------------------------------------- |
 
 8. `시작하기`를 누른 후 `기존 키 페어 선택 또는 새 키 페어 생성` 하기를 합니다.
     * `새 키 페어 생성`, `RSA`을 선택
@@ -60,14 +76,14 @@
     * `키 페어 다운로드`를 눌러 로컬PC에 저장해 둡니다. 
     > `key-workspace.pem` 파일명으로 생성됨.
 
-    |<img src="images/devops-workspace-image7.png" width="500"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/devops-workspace-image7.png" width="500"/> |
+    | ----------------------------------------------------------- |
 
 9. `인스턴스 시작`을 통해 VM 생성을 확인합니다.
     * 좌측 탐색 창 > 인스턴스 > 인스턴스에서 `workspace` VM을 확인할 수 있습니다.
 
-    |<img src="images/devops-workspace-image8.png" width="700"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/devops-workspace-image8.png" width="700"/> |
+    | ----------------------------------------------------------- |
 
 
 
@@ -87,8 +103,8 @@
 5. **할당** 버튼을 클릭합니다.
 
 
-    |<img src="images/eip-image1.png" width="400"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/eip-image1.png" width="400"/> |
+    | ---------------------------------------------- |
 
 
 
@@ -104,8 +120,8 @@
 4. (선택 사항) 프라이빗 IP 주소에 탄력적 IP 주소를 연결할 프라이빗 IP 주소를 지정합니다.
 5. **연결** 버튼을 클릭합니다.
 
-    |<img src="images/eip-image2.png" width="600"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/eip-image2.png" width="600"/> |
+    | ---------------------------------------------- |
 
 ## 인스턴스에 연결
 
@@ -181,12 +197,12 @@ Windows 사용자는 SSH로 원격 접속을 위해 PuTTY 및 PuTTYgen을 설치
 3. [PuTTY를 사용하여 Windows에서 Linux 인스턴스에 연결](https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/putty.html)을 참고합니다.
 즉, PuTTY는 SSH키의 프라이빗 키 형식을 기본적으로 지원하지 않으므로 puttygen.exe을 이용해 이전에 다운로드해 두었던 프라이빗 키(.pem 파일)을 .ppk 파일로 변환해야 합니다.
 (puttygen.exe 실행 -> Load 버튼 클릭 -> pem 파일 선택 -> Save private key 버튼 클릭 후 ppk 파일 형태로 저장)
-    |<img src="images/putty_key_generator_main.png" width="500"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/putty_key_generator_main.png" width="500"/> |
+    | ------------------------------------------------------------ |
 4. pageant.exe 실행 후 아이콘 우클릭 -> Add Key -> ppk 파일 선택
 5. pageant.exe 아이콘 우클릭 후 New Session을 클릭하여 Host Name 정보(이전에 설정한 탄력적IP주소)를 입력 후 Open 버튼을 클릭합니다. (접속)
-    |<img src="images/putty_configuration.png" width="500"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/putty_configuration.png" width="500"/> |
+    | ------------------------------------------------------- |
 6. GUI Desktop 연결을 위해 ubuntu 패스워드를 설정합니다.
 
 * 터미널에 다음과 같이 실행하여 패스워드 설정합니다.
@@ -251,8 +267,8 @@ Windows 사용자는 RDP로 원격 접속을 위해 원격 테스크톱 연결�
 ### Tools VM 생성
 
 < Tools VM image >
-|<img src="images/tools-vm-image.png" width="300"/> |
-| -------------------------------------------------------------------------- |
+| <img src="images/tools-vm-image.png" width="300"/> |
+| -------------------------------------------------- |
 
 Workspace Remote Desktop(원격 데스크톱) 연결 후,
 [AWS Console](https://aws.amazon.com/)에 로그인하여 다음 단계를 실행합니다.
@@ -262,8 +278,8 @@ Workspace Remote Desktop(원격 데스크톱) 연결 후,
 3. 이하 workspace VM 생성 절차대로 진행합니다.
 4. 인스턴스 유형 **`m5.large`** 를 선택합니다.
 
-    |<img src="images/devops-tools-image1.png" width="600"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/devops-tools-image1.png" width="600"/> |
+    | ------------------------------------------------------- |
 
 5. `다음:인스턴스 세부 정보구성` > `다음:스토리지 추가` > `다음:태그 추가` 까지 진행한 후 다음과 같이 입력합니다.
     * 키 : `Name`
@@ -275,8 +291,8 @@ Workspace Remote Desktop(원격 데스크톱) 연결 후,
     * 포트 범위 : `8080`, `8000`, `9000`, `50000` , `6100`(설명: scouter)
     * 소스 : `사용자 지정`, `0.0.0.0/0`
 
-    |<img src="images/devops-tools-image2.png" width="700"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/devops-tools-image2.png" width="700"/> |
+    | ------------------------------------------------------- |
 
     **[추가]**
     * 유형 : **`사용자 지정 UDP`**
@@ -293,8 +309,8 @@ Workspace Remote Desktop(원격 데스크톱) 연결 후,
     * `키 페어 다운로드`를 눌러 로컬PC에 저장해 둡니다. 
     > `key-tools.pem` 파일명으로 생성됨
 
-    |<img src="images/devops-tools-image3.png" width="500"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/devops-tools-image3.png" width="500"/> |
+    | ------------------------------------------------------- |
 
 9. `인스턴스 시작`을 통해 VM 생성을 확인합니다.
     * 좌측 탐색 창 > 인스턴스 > 인스턴스에서 `tools` VM을 확인할 수 있습니다.

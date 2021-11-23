@@ -1,5 +1,13 @@
 **[목차]**
-[TOC]
+- [Spring Boot로 spring-petclinic-rest 애플리케이션 시작하기](#spring-boot로-spring-petclinic-rest-애플리케이션-시작하기)
+  - [spring-petclinic-rest 프로젝트 Clone](#spring-petclinic-rest-프로젝트-clone)
+  - [STS에서 Spring Boot 프로젝트 구성](#sts에서-spring-boot-프로젝트-구성)
+    - [`타이틀 변경` 기능 구현](#타이틀-변경-기능-구현)
+    - [Local에서 Maven compile](#local에서-maven-compile)
+  - [Git Push to GitHub](#git-push-to-github)
+    - [gitignore 설정](#gitignore-설정)
+    - [Git Commit & Push](#git-commit--push)
+  - [참고](#참고)
 # Spring Boot로 spring-petclinic-rest 애플리케이션 시작하기
 
 ## spring-petclinic-rest 프로젝트 Clone
@@ -7,8 +15,8 @@
 * Import가 완료되면 생성된 Repository로 이동합니다.
 * clone url 복사하기 : `code` > `HTTPS` > `https://github.com/skcc-devops01/spring-petclinic-rest.git`
 
-    |<img src="images/github-app-clone.png" width="700"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/github-app-clone.png" width="700"/> |
+    | ---------------------------------------------------- |
 
 * 로컬 PC의 Workspace 디렉토리로 이동한 다음, `git clone`을 합니다. (ID/PW가 아닌 username/token방식 추천)
 
@@ -52,8 +60,8 @@ STS > Preferences > Run/Debug > Console 에서 Limit console output 체크 후 C
     2. Git Staging View - Unstaged Changes(1)를 Staged Changeds (0)으로 옮깁니다. (+ 클릭을 하여도 옮겨짐)
     옮기고 나면 `Push HEAD...` 이 `Commit and Push`로 바뀝니다. 
 
-        |<img src="images/git-staging2.png" width="700"/>|
-        |-|
+        | <img src="images/git-staging2.png" width="700"/> |
+        | ------------------------------------------------ |
 
     3. 아래와 같이 처리 후 클립합니다.
         * **Commit Messag**: 수정된 내용 입력 ("타이틀 변경")
@@ -61,14 +69,14 @@ STS > Preferences > Run/Debug > Console 에서 Limit console output 체크 후 C
 
     4. User와 Password (token값)을 입력한 후 다음 화면과 같이 처리합니다.
 
-        |<img src="images/git-staging3.png" width="400"/>|
-        |-|
+        | <img src="images/git-staging3.png" width="400"/> |
+        | ------------------------------------------------ |
 
-        |<img src="images/git-staging4.png" width="400"/>|
-        |-|
+        | <img src="images/git-staging4.png" width="400"/> |
+        | ------------------------------------------------ |
 
-        |<img src="images/git-staging5.png" width="500"/>|
-        |-|
+        | <img src="images/git-staging5.png" width="500"/> |
+        | ------------------------------------------------ |
 
     5. github에 수정 사항을 확인합니다.
 

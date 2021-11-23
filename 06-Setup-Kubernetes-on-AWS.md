@@ -1,5 +1,54 @@
 **[목차]**
-[TOC]
+- [Setup Kubernetes on AWS](#setup-kubernetes-on-aws)
+  - [kubectl 설치](#kubectl-설치)
+    - [리눅스에 kubectl 설치](#리눅스에-kubectl-설치)
+      - [리눅스에서 curl을 사용하여 kubectl 바이너리 설치](#리눅스에서-curl을-사용하여-kubectl-바이너리-설치)
+    - [macOS에 kubectl 설치](#macos에-kubectl-설치)
+      - [macOS에서 curl을 사용하여 kubectl 바이너리 설치](#macos에서-curl을-사용하여-kubectl-바이너리-설치)
+      - [Homebrew를 사용하여 kubectl 설치 또는 업그레이드](#homebrew를-사용하여-kubectl-설치-또는-업그레이드)
+    - [kubectl 버전 확인](#kubectl-버전-확인)
+  - [kubens 설치](#kubens-설치)
+    - [리눅스에 kubens 설치](#리눅스에-kubens-설치)
+    - [macOS에 kubens 설치 ( kubectx 에 포함 )](#macos에-kubens-설치--kubectx-에-포함-)
+    - [kubens 사용법](#kubens-사용법)
+  - [kops 설치](#kops-설치)
+    - [리눅스에 kops 설치](#리눅스에-kops-설치)
+      - [리눅스에서 curl을 사용하여 kops 바이너리 설치](#리눅스에서-curl을-사용하여-kops-바이너리-설치)
+    - [macOS에 kops 설치](#macos에-kops-설치)
+      - [Homebrew를 사용하여 kops 설치](#homebrew를-사용하여-kops-설치)
+      - [macOS에서 curl을 사용하여 kops 바이너리 설치](#macos에서-curl을-사용하여-kops-바이너리-설치)
+    - [kops 버전 확인](#kops-버전-확인)
+  - [AWS 환경 구성](#aws-환경-구성)
+    - [IAM User 구성](#iam-user-구성)
+      - [IAM Group 생성](#iam-group-생성)
+      - [kops-group 그룹에 관리형 정책(managed policies) 연결](#kops-group-그룹에-관리형-정책managed-policies-연결)
+      - [IAM User 생성](#iam-user-생성)
+      - [IAM 그룹에 사용자 추가](#iam-그룹에-사용자-추가)
+      - [Access key 생성](#access-key-생성)
+    - [AWS CLI 자격 증명(credentials) 구성](#aws-cli-자격-증명credentials-구성)
+    - [AWS CLI 자격 증명 구성 확인](#aws-cli-자격-증명-구성-확인)
+  - [DNS 구성](#dns-구성)
+  - [클러스터 상태 저장용 S3 버킷 구성](#클러스터-상태-저장용-s3-버킷-구성)
+    - [API 수준(s3api) 명령을 사용하여 S3 버킷 생성](#api-수준s3api-명령을-사용하여-s3-버킷-생성)
+    - [API 수준(s3api) 명령을 사용하여 S3 버킷 버전 관리(Versioning) 기능 활성화](#api-수준s3api-명령을-사용하여-s3-버킷-버전-관리versioning-기능-활성화)
+    - [S3 기본 버킷 암호화 사용](#s3-기본-버킷-암호화-사용)
+  - [Kubernetes Cluster 생성](#kubernetes-cluster-생성)
+    - [KOPS 로컬 환경변수 추가](#kops-로컬-환경변수-추가)
+    - [SSH Key Pair 생성](#ssh-key-pair-생성)
+    - [Ubuntu 20.04 LTS (Focal Fossa) AMI 검색](#ubuntu-2004-lts-focal-fossa-ami-검색)
+    - [Cluster 구성 만들기](#cluster-구성-만들기)
+    - [SSH 액세스](#ssh-액세스)
+    - [Cluster 구성 편집](#cluster-구성-편집)
+    - [Cluster 구축](#cluster-구축)
+    - [Cluster 사용](#cluster-사용)
+    - [Cluster 중지](#cluster-중지)
+    - [Cluster 시작](#cluster-시작)
+    - [Cluster 롤링 업데이트](#cluster-롤링-업데이트)
+    - [Cluster 삭제](#cluster-삭제)
+  - [Lens 설정](#lens-설정)
+  - [Cluster의 모든 Node(Worker)에 `insecure-registries` 설정](#cluster의-모든-nodeworker에-insecure-registries-설정)
+    - [Kubernetes에 Insecure Docker Registry를 설정하는 더 간단한 방법](#kubernetes에-insecure-docker-registry를-설정하는-더-간단한-방법)
+  - [참고](#참고)
 # Setup Kubernetes on AWS
 
 kOps를 사용하여 AWS에 Kubernetes Cluster 구축합니다.
@@ -414,8 +463,8 @@ aws ec2 describe-images --region ap-northeast-2 --output table \
 
 실습에 사용할 이미지는 `ami-04876f29fd3a5e8ba` 선택합니다. 
 
-|<img src="images/machine-image-id.png" width="700"/> |
-| -------------------------------------------------------------------------- |
+| <img src="images/machine-image-id.png" width="700"/> |
+| ---------------------------------------------------- |
 
 ### Cluster 구성 만들기
 

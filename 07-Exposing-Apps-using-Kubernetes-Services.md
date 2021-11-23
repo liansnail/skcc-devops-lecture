@@ -1,5 +1,22 @@
 **[목차]**
-[TOC]
+- [Kubernetes 서비스를 사용하여 애플리케이션 노출](#kubernetes-서비스를-사용하여-애플리케이션-노출)
+  - [Kubernetes 서비스 개요](#kubernetes-서비스-개요)
+  - [서비스와 레이블](#서비스와-레이블)
+  - [Namespace 생성](#namespace-생성)
+  - [Docker Registry 시크릿(Secret) 생성](#docker-registry-시크릿secret-생성)
+    - [커맨드 라인에서 자격 증명을 통하여 시크릿 생성하기](#커맨드-라인에서-자격-증명을-통하여-시크릿-생성하기)
+    - [기존의 Docker 자격 증명을 기반으로 시크릿 생성하기](#기존의-docker-자격-증명을-기반으로-시크릿-생성하기)
+    - [시크릿 `harbor-credentials` 검증](#시크릿-harbor-credentials-검증)
+  - [애플리케이션 배포 매니페스트(Manifest) 생성](#애플리케이션-배포-매니페스트manifest-생성)
+  - [ClusterIP 서비스 생성](#clusterip-서비스-생성)
+  - [NodePort 서비스 생성](#nodeport-서비스-생성)
+  - [LoadBalancer 서비스 생성](#loadbalancer-서비스-생성)
+  - [Ingress](#ingress)
+    - [NGINX Ingress controller 설치](#nginx-ingress-controller-설치)
+    - [설치 확인](#설치-확인)
+    - [설치된 버전 감지](#설치된-버전-감지)
+    - [Ingress로 서비스 노출](#ingress로-서비스-노출)
+  - [참고](#참고)
 # Kubernetes 서비스를 사용하여 애플리케이션 노출
 
 Kubernetes 서비스 타입에 대해 알아 보고 레이블과 레이블 셀랙터 오브젝트가 어떻게 서비스와 연관되는지 이해합니다.  
@@ -32,8 +49,8 @@ Kubernetes **Pods**은 언젠가는 죽게 됩니다. 실제 파드들은 [생�
 * 임베디드된 버전 태그들
 * 태그들을 이용하는 객체들에 대한 분류
 
-  |<img src="images/kubernetes_service_pod_label.png" width="600"/> |
-  | -------------------------------------------------------------------------- |
+  | <img src="images/kubernetes_service_pod_label.png" width="600"/> |
+  | ---------------------------------------------------------------- |
 
 ## Namespace 생성
 
@@ -329,8 +346,8 @@ $ curl http://*********.ap-northeast-2.elb.amazonaws.com:9966/petclinic/swagger-
 
 브라우저에서 실행하면 다음과 같이 보입니다.
 
-  |<img src="images/swagger-ui.png" width="600"/> |
-  | -------------------------------------------------------------------------- |
+  | <img src="images/swagger-ui.png" width="600"/> |
+  | ---------------------------------------------- |
 
 
 

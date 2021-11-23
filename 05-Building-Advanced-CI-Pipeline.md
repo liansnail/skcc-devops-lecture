@@ -1,5 +1,34 @@
 **[목차]**
-[TOC]
+- [CI Pipeline 개선](#ci-pipeline-개선)
+  - [Unit Test stage 개선](#unit-test-stage-개선)
+    - [JaCoCo Maven plugin 추가](#jacoco-maven-plugin-추가)
+    - [Jenkins에 JaCoCo plugin 설치](#jenkins에-jacoco-plugin-설치)
+    - [Jenkinsfile에 `Unit Test` stage 수정](#jenkinsfile에-unit-test-stage-수정)
+    - [Jenkins CI Pipeline Job 실행 (Unit Test & Code Coverage)](#jenkins-ci-pipeline-job-실행-unit-test--code-coverage)
+    - [Jenkins에서 Code Coverage 결과 확인](#jenkins에서-code-coverage-결과-확인)
+  - [Static Code Analysis](#static-code-analysis)
+    - [SonarQube Token 생성](#sonarqube-token-생성)
+    - [Jenkins에 Config File Provider plugin 설치](#jenkins에-config-file-provider-plugin-설치)
+    - [Maven settings.xml 설정](#maven-settingsxml-설정)
+    - [Jenkinsfile에 `Static Code Analysis` stage 추가](#jenkinsfile에-static-code-analysis-stage-추가)
+    - [Jenkins CI Pipeline Job 실행 (Static Code Analysis)](#jenkins-ci-pipeline-job-실행-static-code-analysis)
+    - [SonarQube에서 결과 확인](#sonarqube에서-결과-확인)
+  - [Spring Boot Application Packaging](#spring-boot-application-packaging)
+    - [Jenkinsfile에 `Package` stage 추가](#jenkinsfile에-package-stage-추가)
+    - [Jenkins CI Pipeline Job 실행 (Package)](#jenkins-ci-pipeline-job-실행-package)
+  - [Harbor 구성](#harbor-구성)
+    - [프로젝트 생성](#프로젝트-생성)
+  - [Build Docker image](#build-docker-image)
+    - [Dockerfile 생성](#dockerfile-생성)
+    - [Jenkinsfile에 `Build Docker image` stage 추가](#jenkinsfile에-build-docker-image-stage-추가)
+    - [Docker plugin 설치](#docker-plugin-설치)
+    - [Jenkins CI Pipeline Job 실행 (Build Docker image)](#jenkins-ci-pipeline-job-실행-build-docker-image)
+  - [Push Docker image](#push-docker-image)
+    - [Jenkins에서 Docker Registry 자격 증명 생성](#jenkins에서-docker-registry-자격-증명-생성)
+    - [Jenkinsfile에 `Push Docker image` stage 추가](#jenkinsfile에-push-docker-image-stage-추가)
+    - [Jenkins CI Pipeline Job 실행 (Push Docker image)](#jenkins-ci-pipeline-job-실행-push-docker-image)
+    - [Harbor에서 결과 확인](#harbor에서-결과-확인)
+  - [참고](#참고)
 # CI Pipeline 개선
 
 ## Unit Test stage 개선
@@ -49,8 +78,8 @@ Jenkins UI를 통해 JaCoCo Code Coverage 결과를 보기 위해 [JaCoCo plugin
 * **설치 가능** 탭을 클릭하고 검색 필드에 `jacoco`를 입력합니다.
 * **JaCoCo** 플러그인을 체크하고 **재시작 없이 설치하기** 버튼을 클릭하여 설치합니다. (재시작 권고. 이후 플러그인 인식이 안되는 경우가 있음)
 
-    |<img src="images/jenkins-jacoco-install.png" width="600"/>|
-    |-|
+    | <img src="images/jenkins-jacoco-install.png" width="600"/> |
+    | ---------------------------------------------------------- |
 
 ### Jenkinsfile에 `Unit Test` stage 수정
 
@@ -199,18 +228,18 @@ Finished: SUCCESS
 
 Job Dashboard 화면에 **Code Coverage Trend**가 추가된 것을 확인합니다.
 
-|<img src="images/jenkins_ci_pipeline_code_coverage.png" width="700"/>|
-|-|
+| <img src="images/jenkins_ci_pipeline_code_coverage.png" width="700"/> |
+| --------------------------------------------------------------------- |
 
 Job Build 번호를 클릭하여 상세 페이지로 이동하면 **Jacoco - Overall Coverage Summary**이 추가된 것을 알 수 있습니다.
 
-|<img src="images/jenkins_jacoco_overall_coverage_summary.png" width="700"/>|
-|-|
+| <img src="images/jenkins_jacoco_overall_coverage_summary.png" width="700"/> |
+| --------------------------------------------------------------------------- |
 
 사이드 바에서 **Coverage Report**를 클릭하면 **JaCoCo Coverage Report**를 확인할 수 있습니다.
 
-|<img src="images/jenkins_jacoco_coverage_report.png" width="800"/>|
-|-|
+| <img src="images/jenkins_jacoco_coverage_report.png" width="800"/> |
+| ------------------------------------------------------------------ |
 
 ## Static Code Analysis
 
@@ -224,8 +253,8 @@ SonarQube에서 아래와 같이 수행하여 인증 Token을 생성합니다.
 * **Security** 탭을 클릭한 다음, **Tokens** 섹션의 **Generate Tokens** 필드에 Token 이름을 입력하고 **Generate** 버튼을 클릭합니다.
 * 생성된 Token이 화면에 나타나면 복사하여 기록해 둡니다.
 
-|<img src="images/sonarqube_tokens.png" width="500"/>|
-|-|
+| <img src="images/sonarqube_tokens.png" width="500"/> |
+| ---------------------------------------------------- |
 
 ### Jenkins에 Config File Provider plugin 설치
 
@@ -451,8 +480,8 @@ Finished: SUCCESS
 
 * **Dashboard**에서 해당 Job 선택하면 Package로 생성된 Artifacts를 확인할 수 있습니다.빌드 로그를 확인합니다.
 
-|<img src="images/jenkins-pipeline-package.png" width="600"/>|
-|-|
+| <img src="images/jenkins-pipeline-package.png" width="600"/> |
+| ------------------------------------------------------------ |
 
 ## Harbor 구성
 

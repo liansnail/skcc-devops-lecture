@@ -1,5 +1,34 @@
 **[목차]**
-[TOC]
+- [Argo CD로 지속적 배포(Continuous Deployment)](#argo-cd로-지속적-배포continuous-deployment)
+  - [Kubernetes Manifests(YAML)를 사용하여 App 배포](#kubernetes-manifestsyaml를-사용하여-app-배포)
+    - [`petclinic-argocd-manifest` GitHub Repository 생성](#petclinic-argocd-manifest-github-repository-생성)
+    - [Manifests(YAML) 파일 준비](#manifestsyaml-파일-준비)
+    - [Argo CD Web UI를 통해 애플리케이션 생성](#argo-cd-web-ui를-통해-애플리케이션-생성)
+    - [CLI를 통해 애플리케이션 생성](#cli를-통해-애플리케이션-생성)
+    - [`petclinic` 애플리케이션 Sync (Deploy)](#petclinic-애플리케이션-sync-deploy)
+  - [Helm Chart를 사용하여 App 배포](#helm-chart를-사용하여-app-배포)
+    - [Helm Chart 생성](#helm-chart-생성)
+    - [Helm Chart 디버깅](#helm-chart-디버깅)
+    - [Helm Chart 설치 (App 배포)](#helm-chart-설치-app-배포)
+    - [`petclinic-argocd-helm` GitHub Repository 생성](#petclinic-argocd-helm-github-repository-생성)
+    - [GitHub Repository에 Helm 차트 Push](#github-repository에-helm-차트-push)
+    - [CLI를 통해 `petclinic-argocd-helm` 애플리케이션 생성](#cli를-통해-petclinic-argocd-helm-애플리케이션-생성)
+    - [애플리케이션 자동 배포 설정](#애플리케이션-자동-배포-설정)
+    - [CD Pipeline을 트리거하도록 CI Pipeline 수정](#cd-pipeline을-트리거하도록-ci-pipeline-수정)
+      - [Jenkinsfile에 `Update manifest` stage 추가](#jenkinsfile에-update-manifest-stage-추가)
+      - [Jenkins CI Pipeline Job 실행 (Update manifest)](#jenkins-ci-pipeline-job-실행-update-manifest)
+      - [Environment configuration용 GitHub Repository 확인](#environment-configuration용-github-repository-확인)
+      - [애플리케이션 배포 확인(트리거 대기시간 고려)](#애플리케이션-배포-확인트리거-대기시간-고려)
+  - [전체 CI/CD Pipeline 완성하기](#전체-cicd-pipeline-완성하기)
+    - [정상작동을 위한 트리거 이후 stage 수정](#정상작동을-위한-트리거-이후-stage-수정)
+      - [Jenkins에서 ArgoCD 자격 증명 생성](#jenkins에서-argocd-자격-증명-생성)
+      - [ArgoCD Sync Stage 추가](#argocd-sync-stage-추가)
+        - [ArgoCD Container 추가](#argocd-container-추가)
+        - [Jenkinsfile-Basic-CD Stage('Update manifest') 다음에 아래와 같이 ArgoCD Sync 처리를 위한 Stage를 추가합니다.](#jenkinsfile-basic-cd-stageupdate-manifest-다음에-아래와-같이-argocd-sync-처리를-위한-stage를-추가합니다)
+      - [Jenkins CI Pipeline Job 실행 (Argo Sync)](#jenkins-ci-pipeline-job-실행-argo-sync)
+    - [CI 부분 추가 (Build, Unit Test, Static Code Analysis)](#ci-부분-추가-build-unit-test-static-code-analysis)
+      - [Pipeline Job 실행 (전체 Pipeline)](#pipeline-job-실행-전체-pipeline)
+  - [참고](#참고)
 # Argo CD로 지속적 배포(Continuous Deployment)
 
 ## Kubernetes Manifests(YAML)를 사용하여 App 배포
@@ -97,8 +126,8 @@ spec:
 
 * **Settings** 페이지에서 **Repositories**을 클릭합니다.
 
-    |<img src="images/argocd_settings.png" width="600"/> |
-    | -------------------------------------------------------------------------- |
+    | <img src="images/argocd_settings.png" width="600"/> |
+    | --------------------------------------------------- |
 
 * **CONNECT REPO USING HTTPS** 버튼을 클릭한 다음, 아래 항목을 입력하고 **CONNECT** 버튼을 클릭합니다.
   * **Type** : `git` 선택
@@ -232,15 +261,15 @@ argocd app delete petclinic
     └── values.yaml
     ```
 
-    | 디렉토리/파일                | 설명                                                   |
-    |------------------------|------------------------------------------------------|
-    | .helmignore            | 헬름 차트에 포함시키고 싶지 않은 파일들을 지정                           |
-    | Chart.yaml             | 차트에 대한 정보를 포함하는 YAML 파일                              |
-    | charts                 | 이 차트가 의존하는 차트를 포함하는 디렉토리                             |
+    | 디렉토리/파일          | 설명                                                                          |
+    | ---------------------- | ----------------------------------------------------------------------------- |
+    | .helmignore            | 헬름 차트에 포함시키고 싶지 않은 파일들을 지정                                |
+    | Chart.yaml             | 차트에 대한 정보를 포함하는 YAML 파일                                         |
+    | charts                 | 이 차트가 의존하는 차트를 포함하는 디렉토리                                   |
     | templates              | 값과 결합하여 유효한 Kubernetes manifest 파일을 생성하기 위한 템플릿 디렉토리 |
-    | templates/NOTES.txt    | 차트의 "도움말". `helm install`을 실행할 때 사용자에게 표시            |
-    | templates/_helpers.tpl | 차트 전체에서 다시 사용할 수 있는 템플릿 헬퍼를 지정하는 공간                  |
-    | values.yaml            | 이 차트의 기본 구성 값                                        |
+    | templates/NOTES.txt    | 차트의 "도움말". `helm install`을 실행할 때 사용자에게 표시                   |
+    | templates/_helpers.tpl | 차트 전체에서 다시 사용할 수 있는 템플릿 헬퍼를 지정하는 공간                 |
+    | values.yaml            | 이 차트의 기본 구성 값                                                        |
 
 * `Chart.yaml` 파일을 열고 다음 항목을 수정합니다.
   * description : `A Helm chart for Petclinic App` (차트 설명)
@@ -845,8 +874,8 @@ CI Pipeline에서 사용한 `Jenkinsfile`에서 **Build, Unit Test, Static Code 
 * **Dashboard**에서 Job 선택한 다음, 사이드 바에서 **Build Now**를 클릭하여 Job이 실행합니다.
 * **Build History**에서 **#일련번호**을 선택한 다음, **Console Output**을 선택하여 빌드 로그를 확인합니다.
 
-|<img src="images/ci_cd_pipeline_result.png" width=""/>|
-|-|
+| <img src="images/ci_cd_pipeline_result.png" width=""/> |
+| ------------------------------------------------------ |
 
 ## 참고
 
