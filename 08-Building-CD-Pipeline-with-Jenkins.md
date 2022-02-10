@@ -45,7 +45,7 @@
 
 ### Kubernetes plugin 설치
 
-Jenkins와 Kubernetes를 연동하고 Jenkins Pipeline에서 Kubernetes cluster에 리소스 구성(Manifest)을 배포하기 위해 [Kubernetes plugin(v1.30.1)](https://plugins.jenkins.io/kubernetes/), [Kubernetes Continuous Deploy plugin(v.2.3.1)](https://plugins.jenkins.io/kubernetes-cd)과 [Kubernetes CLI(v1.10.3)](https://plugins.jenkins.io/kubernetes-cli/) 설치합니다.
+Jenkins와 Kubernetes를 연동하고 Jenkins Pipeline에서 Kubernetes cluster에 리소스 구성(Manifest)을 배포하기 위해 [Kubernetes plugin(v1.30.1)](https://plugins.jenkins.io/kubernetes/), [kubernetes client api(v5.4.1)](https://updates.jenkins.io/download/plugins/kubernetes-client-api/5.4.1/kubernetes-client-api.hpi),[Kubernetes Continuous Deploy plugin(v.2.3.1)](https://plugins.jenkins.io/kubernetes-cd)과 [Kubernetes CLI(v1.10.3)](https://plugins.jenkins.io/kubernetes-cli/) 설치합니다.
 
 >[주의] 현재 환경에 맞게 버전을 확인하여 설치하여야합니다.
 
